@@ -1,25 +1,30 @@
-// Language::CwC
-
+//lang::CwC
 #pragma once
 
-/*
- * Generic object class.
- */
+#include <cstdlib>
+
+/**
+ * A class that represents the top of the object hierarchy.
+ * author: chasebish */
 class Object {
 public:
-  
-  // default constructor
-  Object() = default;
-  
-  // default destructor
-  virtual ~Object() = default;
-  
-  // pure virtual hash function, to be implemented by child classes.
-  virtual size_t hash() = 0;
+  /** CONSTRUCTORS & DESTRUCTORS **/
 
-  // check equality of two objects
-  virtual bool equals(Object* other) = 0;
+  /* Default Object constructor */
+  Object();
 
-  // string representation of this object
-  virtual const char* to_string() = 0;
+  /* Default Object destructor, to be overriden by subclasses */
+  virtual ~Object();
+
+
+  /** VIRTUAL METHODS **/
+
+  /* Returns whether two objects are equal, to be overriden by subclasses */
+  virtual bool equals(Object* const obj);
+
+  /* Returns an object's hash value. Identical objects should have identical hashes */
+  virtual size_t hash();
+
+  /* Returns a c string representation of the object */
+  virtual const char* to_string();
 };

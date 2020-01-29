@@ -1,65 +1,51 @@
-// Language::CwC
-
+//lang::CwC
 #pragma once
 
-#include <cstring>
 #include "object.h"
+#include <cstdlib>
+#include <cstring>
+#include <cstdio> 
 
-/*
- * Represents a string value. Is of type Object.
- */
+// Attribution - from: https://github.com/chasebish/cwc_object_string/blob/master/string.h at 1/29/20 9:33AM
+
+/**
+ * An immutable String class representing a char*
+ * author: chasebish */
 class String : public Object {
 public:
-  
-  // =============================== METHODS ===============================
-  
-  // Default constructor.
-  String() = default;
-  
-  // Constructor that accepts a string as a value.
-  String(const char* value) : _val(value) {
-  }
-  
-  // Default destructor.
-  virtual ~String() = default;
-  
-  // Concats the given string to the current string
-  String* concat(String* other)
-  {
-    const char* otherVal = other->to_string();
-    char* currValMutable = strdup(_val);
-    String* ret = new String(strcat(currValMutable, otherVal));
-    return ret;
-  }
-  
-  // computes hash value of string by alternatively summing and subtracting
-  // ASCII values of characters in strings.
-  virtual size_t hash() {
-    size_t hash = 0;
-    bool add = false;
-    for (int i = 0; i < strlen(_val); ++i) {
-      if (i % 4 == 0 && add) {
-        hash += _val[i];
-        add = false;
-      } else {
-        hash -= _val[i];
-        add = true;
-      }
-    }
-    return hash;
-  }
-  
-  // checks equality of the given string with this string
-  virtual bool equals(Object* other) {
-    return strcmp(((String*)other)->to_string(), _val) == 0;
-  }
-  
-  // returns the string value of this object as const char*
-  virtual const char* to_string() {
-    return _val;
-  }
+  /** CONSTRUCTORS & DESTRUCTORS **/
 
-  // ================================ FIELDS ================================
-  // value of string held by this object
-  const char* _val;
+  /* Creates a String copying s */
+  String(const char* s);
+
+  /* Copies a String copying the value from s */
+  String(String* const s);
+
+  /* Clears String from memory */
+  ~String();
+
+
+  /** INHERITED METHODS **/
+
+  /* Inherited from Object, generates a hash for a String */
+  size_t hash();
+
+  /* Inherited from Object, checks equality between an String and an Object */
+  bool equals(Object* const obj);
+
+
+  /** STRING METHODS **/
+  
+  /** Compares strings based on alphabetical order
+   * < 0 -> this String is less than String s
+   * = 0 -> this String is equal to String s
+   * > 0 -> this String is greater than String s
+   */
+  int cmp(String* const s);
+
+  /* Creates a new String by combining two existing Strings */
+  String* concat(String* const s);
+
+  /* Returns the current length of the String */
+  size_t size();
 };
