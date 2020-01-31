@@ -175,21 +175,24 @@ void testMap() {
   t_true(map3->size() == 3);
   t_true(mapInMap->size() == 2);
   
-  String** map2Keys = new String*[map2->size()];
+  Object** map2Keys = new Object*[map2->size()];
   map2Keys[0] = key1;
-  String** map3Keys = new String*[map3->size()];
+  Object** map3Keys = new Object*[map3->size()];
   map3Keys[0] = key1;
   map3Keys[1] = key2;
   map3Keys[2] = key3;
-  String** mapInMapKeys = new String*[mapInMap->size()];
+  Object** mapInMapKeys = new Object*[mapInMap->size()];
   mapInMapKeys[0] = key1;
   mapInMapKeys[1] = key2;
   
   t_true(emptyMap->getKeys() == nullptr);
-  t_true(map2->getKeys() == map2Keys);
-  t_true(map3->getKeys() == map3Keys);
-  t_true(mapInMap->getKeys() == mapInMapKeys);
-  
+  t_true(map2->getKeys()[0]->equals(map2Keys[0]));
+  t_true(map3->getKeys()[0]->equals(map3Keys[0]));
+  t_true(map3->getKeys()[1]->equals(map3Keys[1]));
+  t_true(map3->getKeys()[2]->equals(map3Keys[2]));
+  t_true(mapInMap->getKeys()[0]->equals(mapInMapKeys[0]));
+  t_true(mapInMap->getKeys()[1]->equals(mapInMapKeys[1]));
+
   //erase
   map2->erase(key1);
   map3->erase(key1);

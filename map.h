@@ -18,7 +18,7 @@ public:
   }
  
   // Returns all keys as a fixed-length array
-  String** getKeys() {
+  Object** getKeys() {
     return nullptr;
   }
 
