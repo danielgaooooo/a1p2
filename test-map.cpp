@@ -20,12 +20,14 @@ void t_true(bool p) {
   test_counter++;
   if (!p) 
     FAIL(); 
+  printf("Test %d passed!", test_counter);
 }
 
 void t_false(bool p) { 
   test_counter++;
   if (p) 
     FAIL(); 
+  printf("Test %d passed!", test_counter);
 }
 
 // ==================== CwC API TESTS ====================
@@ -241,39 +243,10 @@ void testMap() {
   OK("testMap Passed!");
 }
 
-void testString() {
-  String* empty = new String();
-  String* bob = new String("Bob");
-  String* ann = new String("Ann");
-  String* joe = new String("Joe");
-  String* bobCopy = new String("Bob");
-  String* bobAnnCopy = new String("BobAnn");
-  String* joeAnnCopy = new String("JoeAnn");
-  String* bobAnnJoeAnnCopy = new String("BobAnnJoeAnn");
-  
-  t_true(empty->concat(bob)->equals(bob));
-  t_true(bob->equals(bobCopy));
-  t_true(bob->concat(ann)->equals(bobAnnCopy));
-  t_true(joe->concat(ann)->equals(joeAnnCopy));
-  t_true(bobAnnCopy->concat(joeAnnCopy)->equals(bobAnnJoeAnnCopy));
-  
-  delete empty;
-  delete bob;
-  delete ann;
-  delete joe;
-  delete bobCopy;
-  delete bobAnnCopy;
-  delete joeAnnCopy;
-  delete bobAnnJoeAnnCopy;
-  OK("testString passed!");
-}
-
-
 int main() {
   testHash();
   testEquals();
   testToString();
   testMap();
-  testString();
   return 0;
 }
