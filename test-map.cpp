@@ -127,12 +127,12 @@ void testToString() {
   Object* obj1 = new String("Obj Bob");
   Object* obj2 = new String("Obj Ann");
   
-  t_true(strcmp(empty->to_string(), ""));
-  t_true(strcmp(key1->to_string(), "Key Bob"));
-  t_true(strcmp(key2->to_string(), "Key Ann"));
-  t_true(strcmp(emptyObj->to_string(), ""));
-  t_true(strcmp(obj1->to_string(), "Obj Bob"));
-  t_true(strcmp(obj2->to_string(), "Obj Ann"));
+  t_true(strcmp(empty->to_string(), "") == 0);
+  t_true(strcmp(key1->to_string(), "Key Bob") == 0);
+  t_true(strcmp(key2->to_string(), "Key Ann") == 0);
+  t_true(strcmp(emptyObj->to_string(), "") == 0);
+  t_true(strcmp(obj1->to_string(), "Obj Bob") == 0);
+  t_true(strcmp(obj2->to_string(), "Obj Ann") == 0);
   
   delete empty;
   delete key1;
