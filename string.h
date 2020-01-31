@@ -15,6 +15,8 @@ class String : public Object {
 public:
   /** CONSTRUCTORS & DESTRUCTORS **/
 
+  String();
+
   /* Creates a String copying s */
   String(const char* s);
 
