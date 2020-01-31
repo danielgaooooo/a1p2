@@ -253,7 +253,7 @@ void testString() {
   t_true(bob->equals(bobCopy));
   t_true(bob->concat(ann)->equals(bobAnnCopy));
   t_true(joe->concat(ann)->equals(joeAnnCopy));
-  t_true(bob->concat(joe)->equals(bobAnnJoeAnnCopy));
+  t_true(bobAnnCopy->concat(joeAnnCopy)->equals(bobAnnJoeAnnCopy));
   
   delete empty;
   delete bob;
