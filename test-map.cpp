@@ -82,8 +82,7 @@ void testEquals() {
   String* key3 = new String("Key Ann");
   t_true(empty->equals(empty));
   t_false(empty->equals(key1));
-  t_true(key1->equals(key2));
-  t_true(key2->equals(key1));
+  t_true(key1->equals(key1));
   t_false(key1->equals(key3));
   t_false(key3->equals(key1));
   t_true(key1->equals(key1));
