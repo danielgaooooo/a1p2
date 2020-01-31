@@ -134,21 +134,6 @@ void testToString() {
   t_true(strcmp(emptyObj->to_string(), ""));
   t_true(strcmp(obj1->to_string(), "Obj Bob"));
   t_true(strcmp(obj2->to_string(), "Obj Ann"));
-
-  Map* map1 = new Map();
-  Map* map2 = new Map();
-  Map* map3 = new Map();
-  Map* mapInMap = new Map();
-  Object* val1 = new String("Value Bob");
-  Object* val2 = new String("Value Ann");
-  map2->insert(key1, val1);
-  map3->insert(key1, val1);
-  map3->insert(key2, val2);
-  mapInMap->insert(key1, map2);
-  t_true(strcmp(map1->to_string(), "{}"));
-  t_true(strcmp(map2->to_string(), "{\"Key Bob\":\"Value Bob\"}"));
-  t_true(strcmp(map3->to_string(), "{\"Key Bob\":\"Value Bob\",\"Key Ann\":\"Value Ann\"}"));
-  t_true(strcmp(mapInMap->to_string(), "{\"Key Bob\":{\"Key Bob\":\"Value Bob\"}}"));
   
   delete empty;
   delete key1;
@@ -156,12 +141,6 @@ void testToString() {
   delete emptyObj;
   delete obj1;
   delete obj2;
-  delete map1;
-  delete map2;
-  delete map3;
-  delete mapInMap;
-  delete val1;
-  delete val2;
   OK("testToString Passed!");
 }
 

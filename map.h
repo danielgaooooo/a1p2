@@ -48,6 +48,7 @@ public:
     return false;
   }
 
+  // No supported implementation for map!
   virtual const char* to_string() {
     return nullptr;
   }
