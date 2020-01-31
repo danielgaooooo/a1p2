@@ -1,3 +1,8 @@
+/*
+ * Authors: Brian Yeung, Daniel Gao
+ * CS4500 Assignment 1, Part 2
+ */
+
 // Lang::CwC
 #pragma once
 
